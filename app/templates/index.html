@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio</title>
+  <link rel="stylesheet" href="../static/style.css">
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header>
+    <h2>MyPortfolio</h2>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="left">
+      <h1>Hello I’m <span>Praveen Mehta</span></h1>
+      <p>I am a B.Tech student focused on application development and DevOps practices.</p>
+      <div class="buttons">
+        <a href="#contact" class="hire">Hire Me</a>
+        <a href="#projects" class="hire">My Work</a>
+      </div>
+    </div>
+    <div class="right">
+      <img src="https://i.pinimg.com/736x/ee/61/4f/ee614f15f0576b460f7239a7dc67c809.jpg" alt="Profile Image">
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <h2>About Me</h2>
+    <pre>
+Hi, I’m Praveen Mehta, a passionate full-stack developer creating clean, efficient, and user-friendly web applications.
+I enjoy building projects that solve real-world problems and experimenting with new technologies.
+I have experience in Python, FastAPI, JavaScript, and Flutter, and I’m proficient with MongoDB and MySQL.
+My goal is to combine functionality with beautiful design, delivering projects that are powerful and intuitive.
+When I’m not coding, I enjoy exploring tech blogs, contributing to open-source, and learning new frameworks.
+I’m open to collaborations, freelance projects, or full-time opportunities, so feel free to reach out!
+    </pre>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects">
+    <div class="projects">
+      {% for project in projects %}
+      <div class="card">
+        <h2>{{ project.title }}</h2>
+        {% if project.image_url %}
+        <img src="{{ project.image_url }}" alt="{{ project.title }}">
+        {% endif %}
+        <p>{{ project.description }}</p>
+        <div class="tech-stack">
+          {% for tech in project.tech_stack %}
+          <span>{{ tech }}</span>
+          {% endfor %}
+        </div>
+        <p>
+          <a href="{{ project.github_link }}" target="_blank">GitHub</a> |
+          <a href="{{ project.live_link }}" target="_blank">Live Demo</a>
+        </p>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <div class="contact">
+      <form onsubmit="sendContactData(event)">
+        <input type="text" id="name" placeholder="Your Name" required>
+        <input type="email" id="email" placeholder="Your Email" required>
+        <textarea id="message" placeholder="Message" required></textarea>
+        <button type="submit" class="btn">Send</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2026 Praveen Mehta</p>
+  </footer>
+
+  <script src="../static/script.js"></script>
+</body>
+
+</html>
